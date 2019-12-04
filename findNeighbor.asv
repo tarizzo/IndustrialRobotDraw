@@ -1,0 +1,15 @@
+function [row, col] = findNeighbor(BWimage, x, y)
+    row = -1;
+    col = -1;
+    for i=-1:1
+        for j=-1:1
+            if (i < 1) || (i > size(BWimage, 2)) || (j < 0) || (j > size(BWimage, 1))
+                
+            else if BWimage(y+j, x+i) == 1
+                col = x+i;
+                row = y+j;
+            end
+        end
+    end
+end
+
