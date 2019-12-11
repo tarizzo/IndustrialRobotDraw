@@ -3,7 +3,7 @@ clear
 
 %Image Processing
  I = imread('apple-rainbow.jpg');
-%I = imread('mickey.PNG');
+% I = imread('abb-2.jpg');
 J1 = fspecial('disk', 2);
 
 %scale to 8 1/2 x 11
@@ -119,8 +119,8 @@ axis equal
 drawnow
 %%
 % Set up the socket
-tc=tcpip('127.0.0.1',55000, 'Timeout', 60);
-%tc=tcpip('192.168.100.100',55000, 'Timeout', 60);
+% tc=tcpip('127.0.0.1',55000, 'Timeout', 60);
+tc=tcpip('192.168.100.100',55000, 'Timeout', 60);
 
 % Open the comms
 fopen(tc);
