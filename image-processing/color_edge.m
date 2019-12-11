@@ -8,7 +8,7 @@ J1 = fspecial('disk', 2);
 
 %scale to 8 1/2 x 11
 %xScale = 279.4 / size(BW, 2);  %279.4mm (11 in)
-xScale = 215.9 / size(I, 2);  %279.4mm (11 in)
+xScale = 215.9 / size(I, 2);  %279.4mm (8.5 in)
 yScale = 215.9 / size(I, 2); %215.9mm (8.5 in)
 
 %Start Path
