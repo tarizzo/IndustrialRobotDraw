@@ -1,11 +1,12 @@
 close all
 clear
 
-%I = imread('apple-rainbow.jpg');
-I = imread('putnam.png');
+I = imread('apple-rainbow.jpg');
 imshow(I);
 
-[red, foo] = redMask(I);
+% [red, foo] = redMask(I);
+red = redMask(I);
+red = ~edge(red)
 figure();
 imshow(red);
 
@@ -30,6 +31,7 @@ figure();
 imshow(purple);
 
 [black, foo] = blackMask(I);
+black = ~edge(black);
 figure();
 imshow(black);
 

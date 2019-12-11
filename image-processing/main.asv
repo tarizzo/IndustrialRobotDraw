@@ -9,7 +9,7 @@ I = imread('putnam.PNG');
 %I = histeq(rgb2gray(I));
 I = rgb2gray(I);
 % BW = edge(I, 'Sobel');
-BW = edge(I, 'Canny', [0.1, 0.125]); %putnam
+BW = edge(I, 'Canny');
 
 flippedBW = BW;
 % flippedBW = zeros(size(BW));
@@ -22,6 +22,7 @@ flippedBW = BW;
 
 %scale to 8 1/2 x 11
 %xScale = 279.4 / size(BW, 2);  %279.4mm (11 in)
+ho
 xScale = 215.9 / size(BW, 2);  %279.4mm (11 in)
 yScale = 215.9 / size(BW, 2); %215.9mm (8.5 in)
 
@@ -67,10 +68,22 @@ xPath = [xPath; 0];
 yPath = [yPath; 0];
 
 %for plotting only
+xPathPlot = [];
+yPathPlot = [];
+for i=1:size(xPath)
+    if xPath(i) ~= -1
+        xPathPlot = [xPathPlot, xPath(i)];
+    end
+end
+for i=1:size(yPath)
+    if yPath(i) ~= -1
+        yPathPlot = [yPathPlot, yPath(i)];
+    end
+end
+
 figure()
-plot(xPath, yPath);
-% axis([0, 279.4, 0, 279.4]); %215.9
-axis equal
+plot(xPathPlot, yPathPlot);
+axis([0, 279.4, 0, 279.4]); %215.9
 drawnow
 
 % Set up the socket
@@ -81,7 +94,7 @@ tc=tcpip('192.168.100.100',55000, 'Timeout', 60);
 fopen(tc);
 
 % Send a message to the robot
-% fwrite(tc, 'Hello RobotStudio from MATLAB!');
+fwrite(tc, 'Hello RobotStudio from MATLAB!');
 
 for i = 1:length(xPath)
     fread(tc, 1, 'uint8');
